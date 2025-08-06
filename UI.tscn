@@ -1,0 +1,272 @@
+[gd_scene load_steps=14 format=3 uid="uid://bdngu420wm0me"]
+
+[ext_resource type="Script" uid="uid://popbke4w1bwa" path="res://ui_controller.gd" id="1_2n5f6"]
+[ext_resource type="Texture2D" uid="uid://c8i2n73hxyoft" path="res://assets/sprites/button/button_normal.png" id="1_vrfts"]
+[ext_resource type="Texture2D" uid="uid://bgdabv6whxqg5" path="res://assets/sprites/button/button_pressed.png" id="2_0mc3e"]
+[ext_resource type="Texture2D" uid="uid://dit4w0cpgnxs0" path="res://assets/sprites/shears/shears.png" id="2_3b2b5"]
+[ext_resource type="FontFile" uid="uid://bn7wjkh6gfutq" path="res://assets/sprites/bitByBit_ [font].ttf" id="2_q77pa"]
+[ext_resource type="Texture2D" uid="uid://dinmyxd8ut4k2" path="res://assets/sprites/button/button_hover.png" id="3_2n5f6"]
+[ext_resource type="Texture2D" uid="uid://c61nhd5urryub" path="res://assets/sprites/shovel.png" id="5_0mc3e"]
+[ext_resource type="Texture2D" uid="uid://ousthokp3xgs" path="res://assets/sprites/seed.png" id="6_2n5f6"]
+[ext_resource type="Texture2D" uid="uid://2468nx1lcify" path="res://assets/sprites/Sprite sheet Flowers.png" id="8_27c8x"]
+[ext_resource type="Texture2D" uid="uid://hjymmqniy5om" path="res://assets/sprites/remove-pot.png" id="9_i1vam"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2n5f6"]
+font = ExtResource("2_q77pa")
+font_size = 30
+
+[sub_resource type="Theme" id="Theme_ig7tw"]
+/fonts/margin_top = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1vam"]
+atlas = ExtResource("8_27c8x")
+region = Rect2(384, 35, 15, 14)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_2n5f6")
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Coins: "
+label_settings = SubResource("LabelSettings_2n5f6")
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_2n5f6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_ig7tw")
+theme_type_variation = &"margin_top"
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ShearsButton" type="TextureButton" parent="MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("1_vrfts")
+texture_pressed = ExtResource("2_0mc3e")
+texture_hover = ExtResource("3_2n5f6")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MarginContainer/ShearsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/ShearsButton/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_3b2b5")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_ig7tw")
+theme_type_variation = &"margin_top"
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ShovelButton" type="TextureButton" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("1_vrfts")
+texture_pressed = ExtResource("2_0mc3e")
+texture_hover = ExtResource("3_2n5f6")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MarginContainer2/ShovelButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer2/ShovelButton/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_0mc3e")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_ig7tw")
+theme_type_variation = &"margin_top"
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SeedButton" type="TextureButton" parent="MarginContainer/HBoxContainer/MarginContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("1_vrfts")
+texture_pressed = ExtResource("2_0mc3e")
+texture_hover = ExtResource("3_2n5f6")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MarginContainer3/SeedButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer3/SeedButton/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("6_2n5f6")
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_ig7tw")
+theme_type_variation = &"margin_top"
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PotButton" type="TextureButton" parent="MarginContainer/HBoxContainer/MarginContainer4"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("1_vrfts")
+texture_pressed = ExtResource("2_0mc3e")
+texture_hover = ExtResource("3_2n5f6")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MarginContainer4/PotButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer4/PotButton/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_i1vam")
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_ig7tw")
+theme_type_variation = &"margin_top"
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RemoveButton" type="TextureButton" parent="MarginContainer/HBoxContainer/MarginContainer5"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("1_vrfts")
+texture_pressed = ExtResource("2_0mc3e")
+texture_hover = ExtResource("3_2n5f6")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MarginContainer5/RemoveButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer5/RemoveButton/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("9_i1vam")
+
+[node name="SaveButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 20)
+offset_left = 1032.0
+offset_top = 20.0
+offset_right = 1132.0
+offset_bottom = 51.0
+mouse_filter = 1
+text = "SAVE"
+
+[node name="LoadButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 20)
+offset_left = 1032.0
+offset_top = 61.0
+offset_right = 1132.0
+offset_bottom = 92.0
+mouse_filter = 1
+text = "LOAD"
+
+[connection signal="button_down" from="MarginContainer/HBoxContainer/MarginContainer/ShearsButton" to="." method="_on_shears_button_button_down"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/MarginContainer2/ShovelButton" to="." method="_on_shovel_button_button_down"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/MarginContainer3/SeedButton" to="." method="_on_seed_button_button_down"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/MarginContainer4/PotButton" to="." method="_on_pot_button_button_down"]
+[connection signal="button_down" from="MarginContainer/HBoxContainer/MarginContainer5/RemoveButton" to="." method="_on_remove_button_button_down"]
+[connection signal="button_down" from="SaveButton" to="." method="_on_save_button_button_down"]
+[connection signal="button_down" from="LoadButton" to="." method="_on_load_button_button_down"]
