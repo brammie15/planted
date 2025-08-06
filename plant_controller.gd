@@ -27,7 +27,7 @@ func grow():
 			plant_sprite.frame = growStage
 	
 func useSeed():
-	if _isShoveld:
+	if _isShoveld and not _hasPlant:
 		print("seed planted")
 		_hasPlant = true
 		plant_sprite.frame = 0
