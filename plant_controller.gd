@@ -9,6 +9,8 @@ var _isShoveld = false
 
 var _maxGrowt = 5
 
+var _isSwaying = false
+
 func loadFromSave(position, growStage):
 	self.global_position = position
 	if growStage > 0:
@@ -25,6 +27,11 @@ func grow():
 		if growStage < _maxGrowt:
 			growStage += 1
 			plant_sprite.frame = growStage
+		if growStage == _maxGrowt and not _isSwaying:
+			_isSwaying = true
+			var shader = plant_sprite.material as ShaderMaterial
+			shader.set_shader_parameter("shouldSway", true)
+			shader.set_shader_parameter("time_offset", randf_range(0, TAU))
 	
 func useSeed():
 	if _isShoveld and not _hasPlant:

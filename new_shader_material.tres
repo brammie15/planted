@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c11hat5hgvfg3"]
+
+[ext_resource type="Shader" uid="uid://ds5t6a5eul6qh" path="res://plant_pot.gdshader" id="1_50bgh"]
+
+[resource]
+shader = ExtResource("1_50bgh")
+shader_parameter/shouldSway = false
+shader_parameter/sway_strength = 2.0
+shader_parameter/sway_speed = 0.964
+shader_parameter/wind_direction = 0.0
+shader_parameter/stem_height = 0.983
+shader_parameter/randomness = 0.3
+shader_parameter/time_offset = 0.0
