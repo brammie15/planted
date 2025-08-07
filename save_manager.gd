@@ -6,13 +6,14 @@ func _ready():
 	GameState.SaveManager = self
 
 func save_game():
+	save_score()
 	var save_data = []
 	
 	for pot in get_tree().get_nodes_in_group("Pots"):
-		print(get_tree().get_nodes_in_group("Pots"))
 		var pot_data = {
 			"position": pot.global_position,
-			"growth_stage": pot.growStage
+			"grow_stage": pot.grow_stage,
+			"is_shoveled": pot.is_shoveled
 		}
 		save_data.append(pot_data)
 	
@@ -22,15 +23,21 @@ func save_game():
 	
 	print("Game saved!")
 	
+	
+func save_score():
+	var file = FileAccess.open("user://score.txt", FileAccess.WRITE)
+	file.store_string(str(GameState.Score))
+	file.close()
+	print("Saved score")
+	
 # steek deze in slides
 func string_to_vector2(s: String) -> Vector2:
-	print("original: " + s)
 	s = s.substr(1, s.length() - 2)	
-	print("first: " + s)
 	var parts = s.split(",")
 	return Vector2(parts[0].to_float(), parts[1].to_float())
 	
 func load_game():
+	load_score()
 	var path = "user://save_game.json"
 	if not FileAccess.file_exists(path):
 		print("No save file found.")
@@ -50,8 +57,26 @@ func load_game():
 
 	for pot_data in save_data:
 		var pot = PotScene.instantiate()
-		pot.loadFromSave(string_to_vector2(pot_data["position"]), int(pot_data["growth_stage"]))
-		add_child(pot)
+		
+		var spawnPosition = string_to_vector2(pot_data["position"]) 
+		var spawn_growt = int(pot_data["grow_stage"])
+		var is_shoveled = bool(pot_data["is_shoveled"])
+		
+		pot.call_deferred("load_from_save", spawnPosition, spawn_growt, is_shoveled)
+		
+		get_tree().current_scene.add_child(pot)
 		pot.add_to_group("Pots")
 	
 	print("Game loaded!")
+
+func load_score():
+	var path = "user://score.txt"
+	if not FileAccess.file_exists(path):
+		print("Score file not found")
+	
+	var file = FileAccess.open(path, FileAccess.READ)
+	var score_string = file.get_as_text()
+	file.close()
+	
+	GameState.Score = int(score_string)
+	print("score loaded")

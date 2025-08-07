@@ -21,6 +21,5 @@ func _process(_delta):
 func _on_save_button_button_down() -> void:
 	GameState.SaveManager.save_game();
 
-
 func _on_load_button_button_down() -> void:
 	GameState.SaveManager.load_game();
